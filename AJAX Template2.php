@@ -1,7 +1,8 @@
+<?php 
 //Lets enqueue the scripts that will trigger our POST to the AJAX API
 function enqueue_ajax_scripts() {
 
-	if ( /* Some condition so you only enqueue scripts where you need them! */ ) {
+if ( /* Some condition so you only enqueue scripts where you need them! */ ) {
 	  wp_enqueue_script( 'javascript-file', plugins_url() . '/your_plugin/js/ajax.js', array('jquery'), '', true );
 	  wp_localize_script( 'javascript-file', 'ajaxStuff', 
       			array(
@@ -22,8 +23,8 @@ add_action( 'wp_ajax_nopriv_our_ajax_action', 'ajax_callback' );
 
 function ajax_callback() {
 	$userData = $_POST['userData'];
-	if ( ! wp_verify_nonce( $_POST['nonce'];, 'ajax-nonce' ) )
-	die ( 'Busted!')
+	if ( ! wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) )
+	die ( 'Busted!');
 	$response['status'] = 'success';
     /*
     	This is where we do whatever we want in PHP

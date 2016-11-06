@@ -11,30 +11,31 @@
    
    //Post Type Terms - this is a shortcut for generic situations, some CPTs may call for more specific terminology
    // - in which case replace the these variables with the static string terms inline
-   $cpt_sing = 'Presentation';
-   $cpt_plural = 'Presentations';
-   $category_sing = 'Presentation Category';
-   $category_plural = 'Presentation Categories';
+   
+   //replace all 'Presentation'; <-singular post type term
+   //replace all 'Presentations'; <- plural
+   //replace all 'Presentation Categories'; 
+   //replace all 'Presentation Categories';
    
 	//Register the Post Type
 	
 	//Set all labels to appropriate termanology	
    function create_post_type() {
   $labels = array(
-    'name'               => _x( $cpt_sing, 'post type general name' ),
-    'singular_name'      => _x( $cpt_sing, 'post type singular name' ),
+    'name'               => _x( 'Presentation', 'post type general name' ),
+    'singular_name'      => _x( 'Presentation', 'post type singular name' ),
     'add_new'            => _x( 'Add New', 'my_cpt' ),
-    'add_new_item'       => __( 'Add New '.$cpt_sing ),
-    'edit_item'          => __( 'Edit '.$cpt_sing ),
-    'new_item'           => __( 'New '.$cpt_sing ),
-    'all_items'          => __( 'All '.$cpt_plural ),
-    'view_item'          => __( 'View '.$cpt_plural ),
-    'search_items'       => __( 'Search '.$cpt_plural ),
-    'not_found'          => __( 'No '.$cpt_plural.' found' ),
-    'not_found_in_trash' => __( 'No '.$cpt_plural.' found in the Trash' ), 
+    'add_new_item'       => __( 'Add New '.'Presentation' ),
+    'edit_item'          => __( 'Edit '.'Presentation' ),
+    'new_item'           => __( 'New '.'Presentation' ),
+    'all_items'          => __( 'All '.'Presentations' ),
+    'view_item'          => __( 'View '.'Presentations' ),
+    'search_items'       => __( 'Search '.'Presentations' ),
+    'not_found'          => __( 'No '.'Presentations'.' found' ),
+    'not_found_in_trash' => __( 'No '.'Presentations'.' found in the Trash' ), 
     'parent_item_colon'  => '',
 	
-    'menu_name'          => $cpt_plural
+    'menu_name'          => 'Presentations'
 	
   );
   
@@ -64,16 +65,16 @@ add_action( 'init', 'create_post_type' );
   global $post, $post_ID;
   $messages['my_cpt'] = array(
     0 => '', 
-    1 => sprintf( __($cpt_sing.' updated. <a href="%s">View '.$cpt_sing.'</a>'), esc_url( get_permalink($post_ID) ) ),
+    1 => sprintf( __('Presentation'.' updated. <a href="%s">View '.'Presentation'.'</a>'), esc_url( get_permalink($post_ID) ) ),
     2 => __('Custom field updated.'),
     3 => __('Custom field deleted.'),
-    4 => __($cpt_sing.' updated.'),
-    5 => isset($_GET['revision']) ? sprintf( __($cpt_sing.' restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-    6 => sprintf( __($cpt_sing.' published. <a href="%s">View '.$cpt_sing.'</a>'), esc_url( get_permalink($post_ID) ) ),
+    4 => __('Presentation'.' updated.'),
+    5 => isset($_GET['revision']) ? sprintf( __('Presentation'.' restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+    6 => sprintf( __('Presentation'.' published. <a href="%s">View '.'Presentation'.'</a>'), esc_url( get_permalink($post_ID) ) ),
     7 => __('Issue saved.'),
-    8 => sprintf( __($cpt_sing.' submitted. <a target="_blank" href="%s">Preview '.$cpt_sing.'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
-    9 => sprintf( __($cpt_sing.' scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview '.$cpt_sing.'</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
-    10 => sprintf( __($cpt_sing.' draft updated. <a target="_blank" href="%s">Preview '.$cpt_sing.'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    8 => sprintf( __('Presentation'.' submitted. <a target="_blank" href="%s">Preview '.'Presentation'.'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+    9 => sprintf( __('Presentation'.' scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview '.'Presentation'.'</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+    10 => sprintf( __('Presentation'.' draft updated. <a target="_blank" href="%s">Preview '.'Presentation'.'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
   );
   return $messages;
 }
@@ -84,17 +85,17 @@ add_filter( 'post_updated_messages', 'cpt_messages' );
 
 function add_my_cpt_category() {
   $labels = array(
-    'name'              => _x( $category_plural, 'taxonomy general name' ),
-    'singular_name'     => _x( $category_sing, 'taxonomy singular name' ),
-    'search_items'      => __( 'Search '.$category_plural ),
-    'all_items'         => __( 'All '.$category_plural ),
-    'parent_item'       => __( 'Parent '.$category_sing ),
-    'parent_item_colon' => __( 'Parent '.$category_sing.':' ),
-    'edit_item'         => __( 'Edit '.$category_sing ), 
-    'update_item'       => __( 'Update '.$category_sing ),
-    'add_new_item'      => __( 'Add New '.$category_sing ),
-    'new_item_name'     => __( 'New '.$category_sing ),
-    'menu_name'         => __( $category_plural ),
+    'name'              => _x( 'Presentation Categories', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Presentation Category', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search '.'Presentation Categories' ),
+    'all_items'         => __( 'All '.'Presentation Categories' ),
+    'parent_item'       => __( 'Parent '.'Presentation Category' ),
+    'parent_item_colon' => __( 'Parent '.'Presentation Category'.':' ),
+    'edit_item'         => __( 'Edit '.'Presentation Category' ), 
+    'update_item'       => __( 'Update '.'Presentation Category' ),
+    'add_new_item'      => __( 'Add New '.'Presentation Category' ),
+    'new_item_name'     => __( 'New '.'Presentation Category' ),
+    'menu_name'         => __( 'Presentation Categories' ),
   );
   $args = array(
     'labels' => $labels,
